@@ -1,0 +1,23 @@
+{
+  "name": "spoedgrens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "typings": "lib/index.js",
+  "scripts": {
+    "build": "tsc -p ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.2",
+    "html-webpack-plugin": "^2.28.0",
+    "typescript": "^2.2.2",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "howler": "^2.0.3",
+    "three": "^0.85.2"
+  }
+}
