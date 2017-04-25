@@ -1,0 +1,12 @@
+{
+  "compilerOptions" : {
+    "declaration": true,
+    "outDir" : "lib"
+  },
+  "awesomeTypescriptLoaderOptions": {
+    /* ... */
+  },
+  "include" : [
+    "src"
+  ]
+}
