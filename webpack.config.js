@@ -6,7 +6,8 @@ module.exports = {
         entry: './src/index.ts',
         output: {
                 filename: 'bundle.js',
-                path: path.resolve(__dirname, 'dist')
+                path: path.resolve(__dirname, 'dist'),
+                publicPath: "/assets/"
         },
 
         // Currently we need to add '.ts' to the resolve.extensions array.
@@ -27,6 +28,8 @@ module.exports = {
         },
 
         plugins: [
-                new HtmlWebpackPlugin()
+                new HtmlWebpackPlugin({
+                        template: 'src/templates/template.ejs', // Load a custom template (ejs by default see the FAQ for details)
+                })
         ]
 };
