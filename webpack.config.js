@@ -7,7 +7,7 @@ module.exports = {
         output: {
                 filename: 'bundle.js',
                 path: path.resolve(__dirname, 'dist'),
-                publicPath: "/assets/"
+
         },
 
         // Currently we need to add '.ts' to the resolve.extensions array.
@@ -20,6 +20,8 @@ module.exports = {
 
         module: {
                 loaders: [
+                        { test: /\.(glsl|frag|vert)$/, loader: 'raw-loader'},
+                        { test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader'},
                         {
                                 test: /\.tsx?$/,
                                 loader: 'awesome-typescript-loader'

@@ -21,7 +21,10 @@
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
+    "glslify-loader": "^1.0.2",
     "howler": "^2.0.3",
+    "postprocessing": "^2.1.2",
+    "raw-loader": "^0.5.1",
     "three": "^0.85.2"
   }
 }
