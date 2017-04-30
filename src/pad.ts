@@ -59,5 +59,29 @@ export default class Pad {
 
     }
 
+    generatePadTekensGroot(streep_count = 100, scene: THREE.Scene){
+
+        let strepe = [];
+
+
+        var tekenSpriteMap = new THREE.TextureLoader().load('/assets/images/pad_teken_groot.png');
+        var tekenMaterial = new THREE.MeshBasicMaterial( { map: tekenSpriteMap, side:THREE.DoubleSide, transparent: true} );
+        tekenMaterial .map.magFilter = THREE.NearestFilter;
+
+        var tekenGeometry = new THREE.PlaneGeometry( 190, 130); //new THREE.PlaneGeometry(10, 100, 2, 2);
+
+
+        for (let i = 0; i < streep_count; i++){
+            let teken = new THREE.Mesh(tekenGeometry, tekenMaterial );
+            teken.position.y = 50;
+            teken.position.z = i * -800;
+            console.log(teken.position.z);
+            scene.add(teken);
+        }
+
+        return strepe;
+
+    }
+
 }
 

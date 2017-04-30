@@ -50,6 +50,18 @@ class Spoedgrens {
 
         this.aspect_ratio = this.canvas_width / this.canvas_height;
 
+        var sound = new Howler.Howl({
+            src: ['/assets/music/track.mp3'],
+            autoplay: true,
+            loop: true,
+            volume: 0.5,
+            onend: function() {
+                console.log('Finished!');
+            }
+        });
+
+        // console.log("Sounds", sound );
+
         //Background stuff
         this.orth_camera = new THREE.OrthographicCamera(this.canvas_width/-2, this.canvas_width/2, this.canvas_height/2, this.canvas_height/-2, -500, 1500);
         this.orth_camera.position.z = 10;
@@ -60,10 +72,12 @@ class Spoedgrens {
         //Road stuff
         this.perspective_camera = new THREE.PerspectiveCamera(75, this.aspect_ratio, 1, 10000);
         this.perspective_camera.position.z = 10;
-        this.perspective_camera.position.x = -20;
+        this.perspective_camera.position.x = -25;
+
 
         this.road_scene = new THREE.Scene();
         this.setupRoadSprites(this.road_scene);
+
 
 
         this.renderer = new THREE.WebGLRenderer({
@@ -77,15 +91,18 @@ class Spoedgrens {
 
         this.composer = new EffectComposer(this.renderer);
 
-        this.composer.addPass(new RenderPass(this.background_orth_scene, this.orth_camera, {}));
+        let pass3 = new RenderPass(this.background_orth_scene, this.orth_camera, {})
+        // pass3.renderToScreen = true;
+        this.composer.addPass(pass3);
 
-
-        const pass1 = new GlitchPass();
-        // pass1.renderToScreen = true;
-        this.composer.addPass(pass1);
+        // const pass1 = new GlitchPass();
+        // // pass1.renderToScreen = true;
+        // this.composer.addPass(pass1);
 
         let finalPass = new RenderPass(this.road_scene, this.perspective_camera, {clear: false, clearDepth: true});
+        // finalPass.renderToScreen = true;
         this.composer.addPass(finalPass);
+
 
         const pass = new FilmPass({greyscale: true});
         pass.renderToScreen = true;
@@ -110,8 +127,9 @@ class Spoedgrens {
         this.pad = new Pad();
 
 
-        this.pad.generateStrepe(100, scene);
-        this.pad.generateTeer(100, scene);
+        this.pad.generateStrepe(200, scene);
+        this.pad.generateTeer(150, scene);
+        this.pad.generatePadTekensGroot(15, scene);
 
 
     }
