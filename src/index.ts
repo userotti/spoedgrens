@@ -92,7 +92,7 @@ class Spoedgrens {
         this.road_scene.add(this.headlight_target);
 
         //headlights
-        this.headlight_left = new THREE.SpotLight( 0xffffff, 1.8);
+        this.headlight_left = new THREE.SpotLight( 0xdeedbb, 1.8);
         this.headlight_left.position.set( this.perspective_camera.position.x-10, this.perspective_camera.position.y-4, this.perspective_camera.position.z - 10 );
         this.headlight_left.angle = Math.PI / 5;
         this.headlight_left.penumbra = 0.15;
@@ -102,7 +102,7 @@ class Spoedgrens {
         this.headlight_left.target.updateMatrixWorld();
 
         //headlights
-        this.headlight_right = new THREE.SpotLight( 0xffffff, 1.5);
+        this.headlight_right = new THREE.SpotLight( 0xdddeaa, 1.5);
         this.headlight_right.position.set( this.perspective_camera.position.x+10, this.perspective_camera.position.y-4, this.perspective_camera.position.z - 10 );
         this.headlight_right.angle = Math.PI / 5;
         this.headlight_right.penumbra = 0.2;
@@ -117,7 +117,7 @@ class Spoedgrens {
         this.road_scene.add(this.headlights);
 
         //more light
-        var light = new THREE.AmbientLight( 0xffffff, 0.3 ); // soft white light
+        var light = new THREE.AmbientLight( 0xababee, 0.2 ); // soft white light
         this.road_scene.add( light );
 
         this.setupRoadSprites(this.road_scene);
@@ -173,10 +173,10 @@ class Spoedgrens {
         this.pad = new Pad();
 
 
-        this.pad.generateStrepe(150, scene);
-        this.pad.generateTeer(150, scene);
-        this.pad.generatePadTekensGroot(10, scene);
-        this.pad.generateRandomSpoedTekens(23, scene);
+        this.pad.generateStrepe(250, scene);
+        this.pad.generateTeer(250, scene);
+        this.pad.generatePadTekensGroot(20, scene);
+        this.pad.generateRandomSpoedTekens(43, scene);
 
     }
 
