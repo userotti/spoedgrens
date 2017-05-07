@@ -74,6 +74,76 @@ export default class Pad {
 
     }
 
+    generateGround(ground_count = 100, scene: THREE.Scene) {
+
+        let ground_block = [];
+
+
+        var groundSpriteMap = new THREE.TextureLoader().load('/assets/images/ground.png');
+        var groundMaterial = new THREE.MeshPhongMaterial({map: groundSpriteMap, side: THREE.DoubleSide});
+        groundMaterial.map.magFilter = THREE.NearestFilter;
+
+        var groundGeometry = new THREE.PlaneGeometry(500, 500); //new THREE.PlaneGeometry(10, 100, 2, 2);
+
+
+        for (let i = 0; i < ground_count; i++) {
+            for (let j = 0; j < 3; j++) {
+                let ground = new THREE.Mesh(groundGeometry, groundMaterial);
+                ground.position.z = i * -500;
+                ground.position.y = -1;
+                ground.position.x = -500 + (j * 500);
+
+                ground.rotation.x = Math.PI / 2;
+                scene.add(ground);
+            }
+        }
+
+
+
+    }
+
+
+    generateStraatLigte(lig_count = 100, scene: THREE.Scene) {
+
+        let ligte = [];
+
+
+        var straatligSpriteMap = new THREE.TextureLoader().load('/assets/images/straat_lig.png');
+        var straatligMaterial = new THREE.MeshPhongMaterial({
+            map: straatligSpriteMap,
+            side: THREE.DoubleSide,
+            transparent: true
+        });
+        straatligMaterial.map.magFilter = THREE.NearestFilter;
+
+        var straatligGeometry = new THREE.PlaneGeometry(140, 140); //new THREE.PlaneGeometry(10, 100, 2, 2);
+
+
+        for (let i = 0; i < lig_count ; i++) {
+            let straat_lig = new THREE.Mesh(straatligGeometry, straatligMaterial);
+            straat_lig.position.x = 220;
+            straat_lig.position.y = 50;
+            straat_lig.position.z = i * -180;
+            scene.add(straat_lig);
+
+            //headlights
+            let lamp = new THREE.SpotLight( 0xdddeaa, 1.5);
+            lamp.position.set( straat_lig.position.x - 160, straat_lig.position.y + 100, straat_lig.position.z );
+            lamp.angle = Math.PI / 1.5;
+            lamp.penumbra = 0.5;
+            lamp.decay = 2;
+            lamp.distance = 500;
+            lamp.target.position.set(straat_lig.position.x, straat_lig.position.y, straat_lig.position.z - 10);
+            lamp.target.updateMatrixWorld();
+            scene.add(lamp);
+
+        }
+
+        return ligte;
+
+    }
+
+
     generatePadTekensGroot(streep_count = 100, scene: THREE.Scene) {
 
         let strepe = [];
@@ -166,7 +236,7 @@ export default class Pad {
                 teken.position.x = -170;
             }
 
-            teken.position.y = 15;
+            teken.position.y = 19;
             teken.position.z = i * -700;
             // console.log(teken.position.z);
             teken.add(spoedNommer);

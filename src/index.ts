@@ -20,6 +20,8 @@ class Spoedgrens {
     headlight_left: THREE.PointLight;
     headlight_right: THREE.PointLight;
 
+    road_ambient_light: THREE.AmbientLight;
+
     headlight_target: THREE.Object3D;
     aspect_ratio: number;
 
@@ -77,7 +79,7 @@ class Spoedgrens {
 
 
         //Road stuff
-        this.perspective_camera = new THREE.PerspectiveCamera(75, this.aspect_ratio, 1, 10000);
+        this.perspective_camera = new THREE.PerspectiveCamera(75, this.aspect_ratio, 1, 3000);
         this.perspective_camera.position.y = 19;
         this.perspective_camera.position.x = -25;
 
@@ -117,8 +119,10 @@ class Spoedgrens {
         this.road_scene.add(this.headlights);
 
         //more light
-        var light = new THREE.AmbientLight( 0xababee, 0.2 ); // soft white light
-        this.road_scene.add( light );
+        this.road_ambient_light = new THREE.AmbientLight( 0xababee, 0.5 ); // soft white light
+        this.road_scene.add( this.road_ambient_light  );
+
+        this.road_scene.fog = new THREE.FogExp2( 0x0f172c, 0.0005 );
 
         this.setupRoadSprites(this.road_scene);
 
@@ -175,6 +179,8 @@ class Spoedgrens {
 
         this.pad.generateStrepe(250, scene);
         this.pad.generateTeer(250, scene);
+
+        this.pad.generateGround(50, scene);
         this.pad.generatePadTekensGroot(20, scene);
         this.pad.generateRandomSpoedTekens(43, scene);
 
@@ -224,7 +230,9 @@ class Spoedgrens {
         this.perspective_camera.position.z -= 7;
         this.headlights.position.z -= 7;
 
-
+        if (this.road_ambient_light.intensity > 0.15){
+            this.road_ambient_light.intensity -= 0.001;
+        }
 
         var mouse_diff_sqrt = (window.innerWidth/2 - this.mouse.x)*0.002;
 
