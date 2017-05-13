@@ -64,7 +64,7 @@ class Spoedgrens {
 
             volume: 0.5,
             onend: function() {
-                console.log('Finished!');
+                // console.log('Finished!');
             }
         });
 
@@ -276,7 +276,7 @@ class Spoedgrens {
 var video = new Spoedgrens();
 
 var container = document.getElementById("container");
-console.log("container: ", container.clientWidth);
+// console.log("container: ", container.clientWidth);
 video.init(container.clientWidth, container.clientHeight, container);
 video.animate();
 
@@ -288,7 +288,7 @@ function resizeThrottler() {
     if ( !resizeTimeout ) {
         resizeTimeout = setTimeout(function() {
             resizeTimeout = null;
-            console.log("resizing");
+            // console.log("resizing");
             video.resize(container.clientWidth, container.clientHeight);
 
             // The actualResizeHandler will execute at a rate of 15fps

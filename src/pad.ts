@@ -24,7 +24,7 @@ export default class Pad {
             let streep = new THREE.Mesh(streepGeometry, streepMaterial);
             streep.position.y = 1;
             streep.position.z = i * -100;
-            console.log(streep.position.z);
+            // console.log(streep.position.z);
             streep.rotation.x = Math.PI / 2;
             scene.add(streep);
 
@@ -32,7 +32,7 @@ export default class Pad {
             streep2.position.x = 50;
             streep2.position.y = 1;
             streep2.position.z = i * -100;
-            console.log(streep2.position.z);
+            // console.log(streep2.position.z);
             streep2.rotation.x = Math.PI / 2;
             scene.add(streep2);
 
@@ -40,7 +40,7 @@ export default class Pad {
             streep3.position.x = -50;
             streep3.position.y = 1;
             streep3.position.z = i * -100;
-            console.log(streep3.position.z);
+            // console.log(streep3.position.z);
             streep3.rotation.x = Math.PI / 2;
             scene.add(streep3);
         }
@@ -65,7 +65,7 @@ export default class Pad {
         for (let i = 0; i < streep_count; i++) {
             let streep = new THREE.Mesh(teerGeometry, teerMaterial);
             streep.position.z = i * -100;
-            console.log(streep.position.z);
+            // console.log(streep.position.z);
             streep.rotation.x = Math.PI / 2;
             scene.add(streep);
         }
@@ -164,7 +164,7 @@ export default class Pad {
             let teken = new THREE.Mesh(tekenGeometry, tekenMaterial);
             teken.position.y = 115;
             teken.position.z = i * -1800;
-            console.log(teken.position.z);
+            // console.log(teken.position.z);
             scene.add(teken);
         }
 
